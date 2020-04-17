@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using NetMQ;
 using NetMQ.Sockets;
 
-namespace PublishSubscribeEx
+namespace SubCode
 {
     public class Subscriber
     {
@@ -12,21 +13,24 @@ namespace PublishSubscribeEx
         string messageReceived;
 
         public string GetMsg()
-        { return messageReceived; }
-
-        public Subscriber(string topic)
         {
-            this.topic = topic;
+            return messageReceived;
+        }
+
+        public void SetTopic(string topicName)
+        {
+            topic = topicName;
 
         }
 
         public void Subscribe()
         {
-
             using (var subSocket = new SubscriberSocket())
             {
-                subSocket.Connect("tcp://127.0.0.1:12345");
+                subSocket.Connect("tcp://127.0.0.1:55555");
+                Thread.Sleep(100);
                 subSocket.Subscribe(topic);
+
 
                 while (true)
                 {
@@ -38,8 +42,7 @@ namespace PublishSubscribeEx
                 }
 
             }
-        }
 
+        }
     }
 }
-

@@ -18,7 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PublishSubscribeEx\PublishSubscribeEx.csproj" />
+    <ProjectReference Include="..\PublishSubscribeEx\PubCode.csproj" />
+    <ProjectReference Include="..\SubCode\SubCode.csproj" />
   </ItemGroup>
 
 </Project>
